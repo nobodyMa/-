@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>马堡桢 - 个人简历</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background-color: #f5f7fa;
+            color: #1e293b;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            line-height: 1.6;
+        }
+        .resume {
+            max-width: 1000px;
+            width: 100%;
+            background: #ffffff;
+            padding: 50px 60px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            border-radius: 12px;
+        }
+        /* header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 32px;
+            flex-wrap: nowrap;
+            gap: 20px;
+        }
+        .header-left h1 {
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 6px;
+            color: #0f172a;
+            margin-bottom: 6px;
+        }
+        .header-left .info {
+            font-size: 15px;
+            color: #334155;
+            line-height: 1.7;
+        }
+        .header-left .info .pipe {
+            color: #c94a32;
+            margin: 0 6px;
+            font-weight: 300;
+        }
+        .header-left .info .email {
+            color: #1a5fb4;
+        }
+        .header-right img {
+            width: 110px;
+            height: 140px;
+            object-fit: cover;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            background: #f8fafc;
+            display: block;
+        }
+
+        /* 通用 */
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0f172a;
+            margin: 32px 0 16px 0;
+            padding-bottom: 6px;
+            border-bottom: 3px solid #1a5fb4;
+            position: relative;
+        }
+        .section-title::before {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #c94a32;
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+        }
+
+        /* 表格 */
+        .skill-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14.5px;
+            margin: 6px 0 4px 0;
+        }
+        .skill-table th {
+            text-align: left;
+            padding: 10px 12px 8px 0;
+            font-weight: 600;
+            color: #0f172a;
+            width: 18%;
+            vertical-align: top;
+            border-bottom: 1px solid #e9edf2;
+            border-top: 1px solid #e9edf2;
+        }
+        .skill-table td {
+            padding: 10px 0 8px 12px;
+            vertical-align: top;
+            border-bottom: 1px solid #e9edf2;
+            color: #1e293b;
+            border-top: 1px solid #e9edf2;
+        }
+        .skill-table tr:last-child th,
+        .skill-table tr:last-child td {
+            border-bottom: 1px solid #e9edf2;
+        }    
+
+        /* 获奖列表 */
+        .award-list {
+            list-style: none;
+            padding: 0;
+            margin: 8px 0 4px 0;
+        }
+        .award-list li {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14.5px;
+            padding: 5px 0;
+            border-bottom: 1px dashed #eef2f6;
+            color: #1e293b;
+        }
+        .award-list li:last-child {
+            border-bottom: none;
+        }
+        .award-date {
+            color: #475569;
+            flex-shrink: 0;
+            width: 85px;
+        }
+        .award-level {
+            color: #1a5fb4;
+            font-weight: 500;
+            flex-shrink: 0;
+            margin-left: 20px;
+        }
+
+        /* 业余爱好 */
+        .hobby-list {
+            list-style: none;
+            padding: 0;
+            margin: 6px 0 4px 0;
+        }
+        .hobby-list li {
+            font-size: 14.5px;
+            padding: 6px 0;
+            color: #1e293b;
+            border-bottom: 1px dashed #eef2f6;
+        }
+        .hobby-list li:last-child {
+            border-bottom: none;
+        }
+        .hobby-list strong {
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        /* 个人陈述 */
+        .statement {
+            font-size: 14.5px;
+            color: #1e293b;
+            margin: 6px 0 4px 0;
+            text-align: justify;
+        }
+        .statement strong {
+            color: #0f172a;
+        }
+
+        /* 链接 */
+        a {
+            color: #1a5fb4;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* 响应式 */
+        @media (max-width: 700px) {
+            .resume { padding: 30px 24px; }
+            .header { flex-direction: column; align-items: center; text-align: center; }
+            .header-right { margin-left: 0; }
+            .skill-table th { width: 30%; }
+            .skill-table td { padding-left: 8px; }
+            .award-list li { flex-wrap: wrap; gap: 2px; }
+            .award-date { width: auto; }
+        }
+        @media print {
+            body { background: white; padding: 0; }
+            .resume { box-shadow: none; border-radius: 0; padding: 40px 50px; }
+            .header-right img { border: 1px solid #ccc; }
+            .print-page-break {
+            break-before: page;  /* 或 page-break-before: always; */
+            height: 0;
+            margin: 0;
+            padding: 0;
+            visibility: hidden;
+        }
+}
+    </style>
+</head>
+<body>
+<div class="resume">
+
+    <!-- 头部 -->
+    <div class="header">
+        <div class="header-left">
+            <h1>马堡桢</h1>
+            <div class="info">
+                男 <span class="pipe">|</span> 21岁 <span class="pipe">|</span> 共青团员<br>
+                电话：17334308369 <span class="pipe">|</span> 
+                邮箱：<span class="email"><a href="mailto:mabaozhen@stu.qut.edu.cn" style="color: #1a5fb4; text-decoration: none;">mabaozhen@stu.qut.edu.cn</a></span>
+            </div>
+        </div>
+        <div class="header-right">
+            <img src="免冠照片.jpg" alt="个人证件照">
+        </div>
+    </div>
+
+    <!-- 教育背景 -->
+    <div class="section-title">教育背景</div>
+    <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; font-size: 15px; margin-bottom: 8px; gap: 16px 32px;">
+        <span><strong>青岛理工大学</strong></span>
+        <span>环保设备工程</span>
+        <span>本科</span>
+        <span style="color: #475569; font-weight: 500;">GPA: 4.3/5.0</span>
+        <span style="color: #475569;">2023.09 – 至今</span>
+    </div>
+
+    <!-- 自学课程与技能 -->
+    <div class="section-title">自学课程与技能</div>
+    <table class="skill-table">
+        <tr>
+            <th>分析力学</th>
+            <td>拉格朗日方程、变分原理及其在连续介质框架下的推广。</td>
+        </tr>
+        <tr>
+            <th>流体力学</th>
+            <td>流体运动学与动力学、涡量与涡动力学及湍流基础。</td>
+        </tr>
+        <tr>
+            <th>连续介质力学</th>
+            <td>
+                张量分析（梯度/散度/旋度、拉梅系数、二阶张量的不变量），守恒律。
+                <span style="display: inline-block; margin-left: 8px; font-size: 13px; background: #f1f5f9; padding: 0 8px; border-radius: 12px;">
+                    <a href="https://github.com/nobodyMa/nobodyMa_note_Continuum_Mechanics/blob/main/%E7%AC%94%E8%AE%B0.pdf" target="_blank">📘 课堂笔记</a>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <th>计算流体力学</th>
+            <td>连续介质框架下的有限差分法（一、二阶显式/隐式格式构造、截断误差分析与 von Neumann 稳定性分析等）；有限体积法（守恒律方程离散、通量计算与迎风格式、边界条件处理的基本方法等）；
+                此外，对格子玻尔兹曼方法的介观思想有初步学习（BGK 近似与 Chapman-Enskog 展开等）。</td>
+        </tr>
+        <tr>
+            <th>边界层理论</th>
+            <td>层流边界层的Prandtl方程与Blasius解，边界层分离机制，简单外形下的传热、传质及动量传递的层流边界层理论，湍流边界层的基本特征（壁面律、对数律及阻力系数）。</td>
+        </tr>
+        <tr>
+            <th rowspan="3" style="vertical-align: middle;">编程与工具</th>
+            <td><strong>MATLAB</strong>：较熟练使用，能够编写脚本求解常/偏微分方程，进行参数优化与数据回归分析。
+                <span style="display: inline-block; margin-left: 8px; font-size: 13px; background: #f1f5f9; padding: 0 8px; border-radius: 12px;">
+                    <a href="https://github.com/nobodyMa" target="_blank">💻 GitHub</a>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>C++ / Python</strong>：具备基本的代码阅读能力，掌握基础语法与数据结构。</td>
+        </tr>
+        <tr>
+            <td><strong>Mathematica</strong>：可以进行符号推导与数值验证，辅助理论分析。</td>
+        </tr>        
+    </table>
+
+    <div class="print-page-break"></div>
+    <!-- 获奖经历 -->
+    <div class="section-title">获奖经历</div>
+    <ul class="award-list">
+        <li><span class="award-date">2025-06</span> 第十五届全国周培源大学生力学竞赛（山东赛区）<span class="award-level">二等奖</span></li>
+        <li><span class="award-date">2025-07</span> 第十五届全国周培源大学生力学竞赛（个人赛）<span class="award-level">优秀奖</span></li>
+        <li><span class="award-date">2024-12</span> 第十六届全国大学生数学竞赛（非数学A类）<span class="award-level">三等奖</span></li>
+        <li><span class="award-date">2025-12</span> 第十七届全国大学生数学竞赛（非数学A类）<span class="award-level">三等奖</span></li>
+        <li><span class="award-date">2025-11</span> 全国大学生数学建模竞赛山东赛区<span class="award-level">三等奖</span></li>
+        <li><span class="award-date">2024-12</span> 青岛理工大学优秀学生<span class="award-level">—</span></li>
+        <li><span class="award-date">2024-12</span> 青岛理工大学优秀学生二等奖学金<span class="award-level">—</span></li>
+        <li><span class="award-date">2025-11</span> 青岛理工大学优秀学生<span class="award-level">—</span></li>
+        <li><span class="award-date">2025-11</span> 青岛理工大学优秀学生二等奖学金<span class="award-level">—</span></li>
+    </ul>
+
+    <!-- 业余爱好 -->
+    <div class="section-title">业余爱好</div>
+    <ul class="hobby-list">
+        <li><strong>户外运动：</strong>喜欢在小长假逛公园与骑行，日常利用青岛多丘陵的地形在校园内爬坡锻炼。</li>
+        <li><strong>阅读：</strong>喜欢阅读地理与地质杂志，对地球演化与地表过程有浓厚兴趣；
+            同时广泛涉猎数学、物理、力学等书籍，乐于从不同学科视角理解自然现象。</li>
+        <li><strong>系统与硬件：</strong>喜欢自建服务器的组装与维护，在系统部署与硬件调试中积累了一些运维经验。
+            对 Linux 系统内核机制（进程调度、内存管理、文件系统与 TCP/IP 协议栈）有一定了解；
+            了解服务器硬件架构，掌握带外管理（IPMI/BMC）的基本操作，能够完成操作系统安装、远程控制、虚拟介质挂载（如 ISO 镜像挂载）及多级用户权限配置等部署任务。</li>
+    </ul>
+
+    <!-- 申请动机 -->
+    <div class="section-title">申请动机</div>
+    <div class="statement">
+        <p>我本科就读于环保设备工程专业（前身为能源与动力工程）。大一自学《工程热力学》后，我逐渐感到经典唯象描述难以触及热力学量的微观本质，
+        于是利用大一暑假主动学习了物理专业的《理论力学》《热力学与统计力学》，并为预习《流体力学与流体机械》进一步学习了力学专业的《流体力学》。</p>
+        <p>这一过程让我感受到了流体力学的吸引力——流动现象背后蕴含着从分子到宏观连续介质的多层次物理机制。
+        正是这种探寻物理机理的渴望，促使我希望系统学习流体力学与计算流体力学，在更系统的科研训练中继续探索。</p>
+    </div>
+
+</div>
+</body>
+</html>
